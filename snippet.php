@@ -30,7 +30,8 @@ function valuePropertyEnum($property_id = 0, $property_value = '')
             ],
             'select' => ['ID']
         ])->fetch();
-        if (empty($prop['ID'])) {
+        if (empty($prop['ID']))
+        {
             $prop['ID'] = \Bitrix\Iblock\PropertyEnumerationTable::add([
                 'PROPERTY_ID' => $property_id,
                 'VALUE' => $property_value,
