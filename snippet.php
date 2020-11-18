@@ -30,6 +30,8 @@ function valuePropertyEnum($property_id = 0, $property_value = '')
             ],
             'select' => ['ID']
         ])->fetch();
+        $cache->endDataCache(['ID' => $prop['ID']]);
+        
         if (empty($prop['ID']))
         {
             $prop['ID'] = \Bitrix\Iblock\PropertyEnumerationTable::add([
@@ -38,8 +40,6 @@ function valuePropertyEnum($property_id = 0, $property_value = '')
                 'XML_ID' => $property_value
             ])->getId();
         }
-
-        $cache->endDataCache(['ID' => $prop['ID']]);
     }
     return $prop['ID'];
 }
