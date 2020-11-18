@@ -1,7 +1,17 @@
 <?php
+
+\Bitrix\Main\Loader::includeModule('iblock');
+\Bitrix\Main\Loader::includeModule('catalog');
+
+/**
+ * Add or update list value (List property)
+ * 
+ * @param int    $property_id
+ * @param string $property_value
+ * @return int
+ */
 function valuePropertyEnum($property_id = 0, $property_value = '')
 {
-
     $cacheId = md5(serialize([$property_id, $property_value]));
     $cacheTime = 14400;
     $cachePath = '/EnumList_'.__FUNCTION__.'/prop_' . $property_id;
@@ -32,16 +42,6 @@ function valuePropertyEnum($property_id = 0, $property_value = '')
     }
     return $prop['ID'];
 }
-
-
-
-
-
-
-
-
-\Bitrix\Main\Loader::includeModule('catalog');
-
 
 /**
  * Add or update position price
